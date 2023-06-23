@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        이름(); // 호이스팅(만든 위치가 호출보다 뒤에 있는데 호출가능함) - 선언적 함수에서만 가능
+        var result = func(1,2);
+        console.log(result);
+
+        function 이름() {
+            console.log('함수 호출');
+        }
+
+        function func(a, b) { // 매개변수 a,b
+            return a + b;//리턴이 필요하면 적는다.
+        }
+
+        //함수를 변수에 저장할 수 있습니다. ()의 여부에 따라 의미가 달라진다. 저장할 떄는 !!! ()제외 !!!
+        var a = func;
+        console.log(a); // 개발자도구에서 사용법 알려준다?
+
+        var result = a(3,2);
+        console.log(result);
+
+        
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

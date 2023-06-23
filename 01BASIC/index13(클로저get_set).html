@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    
+    //클로저를 이용한 setter
+    /*  function obj() {
+
+            var name = '홍길동';
+
+            //setter
+            return function (aaa) {
+                name = aaa;
+                return name; 
+            }
+        }
+
+        var result = obj();
+        console.log(result('킹순신'));
+    */
+
+    function person() {
+        var name = '홍길동';
+
+                    //키        값
+        return {
+            'setName' : function(aaa) {
+                name = aaa;
+            },
+            'getName': function () {
+                return name;
+            }
+
+        }  
+    }
+
+    var obj = person();
+    obj.setName('');
+
+    console.log(obj.getName());
+
+
+    </script>
+    
+</body>
+</html>
