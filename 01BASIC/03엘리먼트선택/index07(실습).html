@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* .sel {position: absolute; bottom : 640px; left : 10px;} */
+        p {display: inline-block;}
+    </style>
+
+</head>
+<body>
+    
+    <h3>css속성 변경하기</h3>
+
+    <img src="img/1.jpg" class="img" alt="이미지" width="300" style="border: 3px solid #000;">
+    <div>
+        <select class="sel">
+            <option value="1.jpg">봄</option>
+            <option value="2.jpg">여름</option>
+            <option value="3.jpg">가을</option>
+            <option value="4.jpg">겨울</option>
+        </select>
+
+        <p>변경할 색상:</p>
+        <input type="color" class="col"> 
+    </div>
+    <script>
+        var btn = document.getElementById("btn");
+        var sel = document.querySelector(".sel"); //select태그
+        //var option = sel.querySelectorAll("option"); // 셀렉트태그에서 탐색
+        var img = document.querySelector(".img");
+
+        sel.addEventListener('change', function() {
+            
+            img.src = 'img/' + sel.value;
+
+        })
+
+        var btn2 = document.getElementById("btn2"); //버튼2
+        var col = document.querySelector(".col"); //input color
+
+        col.addEventListener('change', function() {
+            
+            //console.log(col.value);
+            img.style.border = "3px solid " + col.value;
+
+        }) 
+
+
+    </script>
+
+</body>
+</html>

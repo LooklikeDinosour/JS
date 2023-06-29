@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script>
+        //JS는 선언구문 순서가 중요
+        //화면에서 1개만 사용가능
+        //화면 html로드가 끝난 이후 실행
+        window.onload = function() {
+
+            var btn = document.getElementById("btn");
+                      
+            //console.log(btn); //null 순서의 문제 이렇게 써야할 경우가 있다. 이것을 해결하기 위해 window.onload 
+            
+            btn.onclick = function() {
+            console.log("어라라");
+            }
+                
+        }
+        
+    </script>
+
+<button id="btn">기본이벤트</button>
+
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h3>할일 목록 만들기</h3>
+    <div class="namecl">
+        <input type="text" id="namee" placeholder="이름을 입력하세요">
+        <button id = 'namebtn'>확인</button>
+    </div>
+    <div class="a">    
+        <input type="text" id="todo" placeholder="당신의 할일을 적으세요">
+        <button id = 'todobtn'>확인</button>
+       
+    </div>
+
+    <script>
+        var todo = document.getElementById("todo");
+        var namebtn = document.getElementById("namebtn");
+        var todobtn = document.getElementById("todobtn");
+            
+        
+        namebtn.addEventListener('click', function() {
+            var namee = document.getElementById("namee");
+            
+            namee.value = namee.value + "님 안녕하세요";
+            namee.style.border = 'none';
+            namebtn.remove();
+            
+            //namee.value = '';
+
+        });
+        var a = document.querySelector('.a');
+        todobtn.onclick = function () {
+
+           
+            var ul = document.createElement('ul');
+            var li = document.createElement('li');
+            var button = document.createElement('button');
+            button.innerHTML ='X';
+            
+            var todov = document.createTextNode(todo.value);
+
+            
+            li.appendChild(todov);
+            li.appendChild(button);
+            ul.appendChild(li);
+            a.appendChild(ul); //확실한 부모를 지정해줘야한다.
+    
+            button.onclick = function() {
+                li.remove();
+
+           }
+           
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

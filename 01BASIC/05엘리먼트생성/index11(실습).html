@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .content {
+            overflow: hidden;
+            border: 1px solid #777;
+        }
+        .content,
+        .content .left,
+        .content .right {
+            width: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .content .right,
+        .content .left {
+            float:left;
+        }
+        .left .inner,
+        .right .inner {
+            border: 1px solid #777;
+            height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <!--스크립트를 싹 지우고 버튼에 2개로 변경합니다-->
+    <header>
+        <div class="center">
+            <h2>토글형태 활용하기</h2>
+            <button id="btn1" class="dark">어둡게보기</button> <!-- 밝게보기 -->
+            <button id="btn2" class="name">이름보기</button> <!-- 내용보기 -->
+            <!--<button id="btn3" class="write">메모장모드</button>-->
+            
+            <!--추가-->
+            <hr>
+        </div>
+    </header>
+    
+    <section>
+        <div class="content">
+            <div class="left">
+                <div class="inner"><img src="../03엘리먼트선택/img/1.jpg"></div>
+            </div>
+            <div class="right">
+                <div class="inner">
+                    <p class="a">자바스크립트는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 사이드 네트워크 프로그래밍에도 사용되고 있다</p>
+                    <p class="b" style="display:none;">홍길자</br>20세<br/>능력단위</br>Java, Oracle, JSP,CSS, Javascript</p>
+                    <a href="https://www.naver.com">위키백과</a>
+                </div>
+            </div> 
+            <div></div>         
+        </div>
+    </section>
+    
+    <script>
+        var dark = document.querySelector(".dark");
+        var tag = document.querySelectorAll("h2, a, p");
+        dark.onclick = function() {
+            
+            if (dark.classList.contains("bright")) {
+                dark.classList.remove("bright");
+                dark.innerHTML = "밝게보기";
+                
+                document.body.style.backgroundColor = 'black';
+                for(var i = 0; i < tag.length; i++) {
+                    tag[i].style.color = 'white';
+                }
+                
+            } else {
+                dark.classList.add("bright");
+                document.body.style.backgroundColor = 'white';
+                dark.innerHTML = "어둡게보기";
+                
+                for(var i = 0; i < tag.length; i++) {
+                    tag[i].style.color = 'black';
+                }
+            }
+        }
+        
+        var btn2 = document.getElementById("btn2");
+        var pa = document.querySelector(".right > .inner > .a");
+        var pb = document.querySelector(".right > .inner > .b");
+
+        var aa = document.querySelector(".right > .inner > a");
+
+        btn2.onclick = function() {
+
+            if(btn2.classList.contains("contents")) {
+                btn2.classList.remove("contents");
+                btn2.innerHTML = "내용보기";
+                pa.style.display = 'block';
+                aa.style.display = 'block';
+                pb.style.display = 'none';
+                
+                
+
+            } else {
+                btn2.classList.add("contents") 
+                btn2.innerHTML = "이름보기";
+                aa.style.display = 'none';
+                pa.style.display = 'none';
+                pb.style.display = 'block';
+
+            }
+        }   
+        
+    
+
+    </script>
+
+</body>
+</html>
