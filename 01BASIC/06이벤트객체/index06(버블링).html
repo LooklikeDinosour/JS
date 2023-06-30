@@ -33,31 +33,30 @@
         var func1 = document.querySelector(".func1");
         var func2 = document.querySelector(".func2");
         var func3 = document.querySelector(".func3");
-
-        /*      
-        func1.onclick = function () {
-            alert('func1 실행');
-        }
+    
         
-        func2.onclick = function () {
-            alert('func2 실행');
-            event.stopPropagation(); //이벤트 전파를 막음 (쓸일은 많지 않음)
-        }
+        // func1.onclick = function () {
+        //     alert('func1 실행');
+        // }
         
-        func3.onclick = function () {
-            alert('func3 실행');
-        }
-        */
-
-        //이벤트 캡쳐링 페이즈(부모 -> 자식)순으로 실행
-        //이벤트리스너만 가능
+        // func2.onclick = function () {
+        //     alert('func2 실행');
+        //     event.stopPropagation(); //이벤트 전파를 막음 (쓸일은 많지 않음)
+        // }
+        
+        // func3.onclick = function () {
+        //     alert('func3 실행');
+        // }
+       
+        // 이벤트 캡쳐링 페이즈(부모 -> 자식)순으로 실행
+        // 이벤트리스너만 가능
 
         func1.addEventListener('click', function() {
             alert('func1 실행');
         }, true);
         func2.addEventListener('click', function() {
             alert('func2 실행');
-            event.stopPropagation(); //이벤트 캡쳐링 중단
+            //event.stopPropagation(); //이벤트 캡쳐링 중단
 
         }, true);
         func3.addEventListener('click', function() {
