@@ -32,15 +32,6 @@
         //console.log(document.actionForm.name) //input태그중 name=name인 속성
 
     
-        
-  
-        
-        
-        
-        
-        
-        
-        
         var btn = document.getElementById("btn");
         btn.onclick = function() {
             
@@ -53,7 +44,7 @@
                 document.actionForm.name.focus();  //인풋 태그에 포커스
                 return; //함수종료
             } else if(document.actionForm.phone.value.length != 11 ) {
-                alert('번호는 - 없이 11글자 입니다')
+                alert('번호는 - 없이 11글자 입니다');
                 document.actionForm.phone.focus();
                 return;
             } else {

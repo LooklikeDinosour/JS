@@ -15,7 +15,7 @@
         }
 
 
-        .clock h2 {color: white; text-align:center; margin-top: 300px;}
+        .clock h2 {color: red; text-align:center; margin-top: 300px;}
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -39,24 +39,37 @@
         <h2>00:00:00</h2> <!-- 시간 -->
     </div>
 
-    <img src="img/1.jpg" class="bgImg">
+    <!-- <img src="img/1.jpg" class="bgImg"> -->
    
    <script>
+        window.onload = function () {
+            changeImg();
+            todayTime();
 
-        setInterval (changeImg ,3000)
+
+        };
         
-        var num = 1;
+        
+        (function () {
+            
+            changeImg();
+            todayTime();
+            setInterval(changeImg ,2000);
+            setInterval(todayTime, 1000);
+        }) ();
+        
+        var num = 0;
         
         function changeImg () {
             
             var body = document.querySelector('body');
             var imgs = body.dataset.img;
             var obj = JSON.parse(imgs);
-
-            var img = document.createElement('img');
             
+            var img = document.createElement('img');
             img.src=obj[++num];
             img.classList.add("bgImg");
+            console.log(img);
             
             body.removeChild(body.lastChild);
             body.appendChild(img);
@@ -64,27 +77,31 @@
             if(num == 4) {
                 num = 0;
             }
-        
+            
         }; 
-
-
-        var clock = document.querySelector(".clock > h2");
-
-        setInterval (function() {
-
+        
+        
+        
+        
+        function todayTime() {
+            
+            var clock = document.querySelector(".clock > h2");
             var date = new Date()
             
             var hour = ('0'+ date.getHours()).slice(-2);
             var minute = ('0'+ date.getMinutes()).slice(-2);
+            
             var second = ('0'+ date.getSeconds()).slice(-2);
-
             var nowtime = hour + ":" + minute + ":" + second;
-
+            
             clock.innerHTML = nowtime;
+            
+        }
 
-        } , 1000);
+        
+        
+        </script>
 
-    </script>
 
 </body>
 </html>
