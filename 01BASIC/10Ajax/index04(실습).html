@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
-    <style>
-        .movieList {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+        <style>
+            .movieList {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
 
-            width : 1800px;
-            padding : 30px;
-            margin: 0 auto;
-  
-        }
+                width: 1800px;
+                padding: 30px;
+                margin: 0 auto;
+            }
 
-        .movieList .movie {
-            flex-basis: 33.3333%;
-           
-            position: relative;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        
-        .movieList .movie img {
-            position: absolute;
-            Left: 0;
-            top: -20px;
-        }
-        
-        .movieList .movie .inner {
-            padding-left: 250px;
-       
-        }
-        
-        .movieList .movie .summary {
-            height: 200px;
-            overflow: hidden;
-        }
-    </style>
+            .movieList .movie {
+                flex-basis: 33.3333%;
 
-</head>
-<body>
+                position: relative;
+                padding: 20px;
+                box-sizing: border-box;
+            }
 
-    
-    <div class="movieList">
-        <!-- <div class="movie">
+            .movieList .movie img {
+                position: absolute;
+                left: 0;
+                top: -20px;
+            }
+
+            .movieList .movie .inner {
+                padding-left: 250px;
+            }
+
+            .movieList .movie .summary {
+                height: 200px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="movieList">
+            <!-- <div class="movie">
             <img src="#">
             <div class="inner">
                 <h3 class="title">제목</h3>
@@ -58,67 +53,53 @@
                 </ul>
             </div>
         </div> -->
-    </div> 
+        </div>
 
+        <script>
+            fetch(
+                "https://yts.mx/api/v2/list_movies.json?limit=30&quality=1080p&sort_by=rating"
+            )
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (result) {
+                    console.log(result);
 
+                    //var arr = result['data']['movies'];
+                    var arr = result.data.movies;
+                    console.log(arr);
 
+                    // title
+                    // medium_cover_image
+                    // summary
+                    // genres
 
+                    var sum = ""; //화면을 그릴 문자열
+                    for (var i = 0; i < arr.length; i++) {
+                        var img = arr[i].medium_cover_image;
+                        var title = arr[i].title;
+                        var summary = arr[i].summary;
+                        var genres = arr[i].genres;
 
+                        sum += '<div class="movie">';
+                        sum += '<img src="' + img + '">';
+                        sum += '<div class="inner">';
+                        sum += '<h3 class="title">' + title + "</h3>";
+                        sum += '<p class="summary">' + summary + "</p>";
+                        sum += '<ul class="genres">';
+                        for (var j in genres) {
+                            sum += "<li>" + genres[j] + "</li>";
+                        }
+                        //sum += " <li>" + genres + "</li>";
+                        sum += "</ul>";
+                        sum += "</div>";
+                        sum += "</div>";
 
+                        console.log(title);
+                    } //end for
 
-
-
-    <script>
-        fetch('https://yts.mx/api/v2/list_movies.json?limit=30&quality=1080p&sort_by=rating')
-        .then(function(response){
-            return response.json()
-        }).then(function(result) {
-            console.log(result);
-
-            //var arr = result['data']['movies'];
-            var arr =result.data.movies;
-            console.log(arr);
-
-
-            // title
-            // medium_cover_image
-            // summary
-            // genres
-
-            var sum =""; //화면을 그릴 문자열
-            for(var i = 0; i < arr.length; i++) {
-                
-                var img = arr[i].medium_cover_image;
-                var title = arr[i].title;
-                var summary = arr[i].summary;
-                var genres = arr[i].genres;
-
-                sum += '<div class="movie">';
-                sum += '<img src="'+ img +'">';
-                sum += '<div class="inner">';
-                sum += '<h3 class="title">'+ title+'</h3>';
-                sum += '<p class="summary">'+ summary+'</p>';
-                sum += '<ul class="genres">';
-                    for(var j in genres) {
-                        sum += '<li>' + genres[j] +'</li>'
-                   }
-                sum += ' <li>'+genres+'</li>';
-                sum += '</ul>';
-                sum += '</div>';
-                sum += '</div>';
-
-                console.log(title);
-            
-            } //end for
-
-            document.querySelector(".movieList").innerHTML = sum;
-       
-       
-       
-        })
-
-
-    </script>
-    
-</body>
+                    document.querySelector(".movieList").innerHTML = sum;
+                });
+        </script>
+    </body>
 </html>

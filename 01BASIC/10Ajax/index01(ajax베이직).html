@@ -32,20 +32,20 @@
         //reject = 실패
 
 
-        // var promise = fetch('hi.txt');
-        // promise.then() //콜백
+        // fetch 자체로는 promise안불러와짐. 변수명 바꿔봤는데 promise 객체로 반환됌. 
+        var promise = fetch('hi.txt'); 
+        promise.then() //콜백
 
         //fetch를 호출하여 promise로 반환받으면 promise객체안의 then(콜백)함수를 사용할 수 있다.
         //콜백함수 콜하면 백 받을 수있는 약속된 함수 (실행결과를 돌려받는 함수)
-        /*
+        
         fetch('hi.txt').then(xxx)
 
         //콜백함수 
         function xxx(response) { // response의 body에 데이터 담김 
             console.log(response); //response 실행결과값들이 담겨있음
-
         }
-        */
+        
         //3nd
         //text()는 body에 있는 데이터를 문자열로 변환 - return: Promise객체
         //json()는 body에 있는 데이터를 Object로 변환 - return: Promise객체
@@ -56,7 +56,7 @@
         })
         */
 
-        /*
+        
         fetch('hi.txt').then(function(response){
             console.log(response);
 
@@ -70,7 +70,7 @@
 
             })
         })
-        */
+        
 
         
         fetch('hi.txt')
@@ -93,7 +93,7 @@
             console.log(data);
         }).catch(function(e){
             console.log(e); //에러시에 실행됨.
-        })
+        }).finally
 
 
 
